@@ -16,10 +16,22 @@ class Stack:
         self.head = -1
 
     def push(self, v):
-        pass
+        if (self.head + 1) < len(self.storage):
+            self.storage[self.head + 1] = v
+            self.head += 1
+        else:
+            raise StackOverflowError()
 
     def pop(self):
-        pass
+        if (self.head >= 0):
+            e = self.storage[self.head]
+            self.head -= 1
+            return e
+        else:
+            raise StackIsEmptyError()
+            
+    def peek(self):
+        return self.storage[self.head]      
 
     def __len__(self):
-        pass
+        return self.head + 1
